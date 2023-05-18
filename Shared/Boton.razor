@@ -1,8 +1,19 @@
 ﻿<div>
-    <button>@Texto</button>
+    <button @onclick="Counter">@Texto</button>
+    <p>@counter</p>
 </div>
 @code {
 
     [Parameter]
     public string Texto { get; set; }
+
+    [Parameter]
+    public string Start { get; set; }
+
+    protected int counter = 0;
+
+    public void Counter()
+    {
+        counter+=Convert.ToInt32(Start);
+    }
 }   
