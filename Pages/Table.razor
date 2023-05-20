@@ -7,17 +7,28 @@
         <label> Ingreso mensual</label>
         <p>
             
-            <input type="text" @bind-value="mensual" @oninput="ValidateInt"/>
+            <input type="text" @bind-value="monthly" @oninput="ValidateInt"/>
         </p>
 
         <label> Restante</label>
         <p>
-            <input type="text" @bind-value="restante">
+            <input type="text" @bind-value="left">
+        </p>
+
+        <label>Item</label>
+        <p>
+            <input type="text" @bind-value="value" />
         </p>
     </form>
 
     <div class="container">
         <Card Money="100" Name="Default tax"></Card>
+        @foreach(var s in List)
+        {
+            
+            <Card Money="@s.Split("-")[0]" Name="@s.Split('-')[1]"></Card>
+        }
+        <AddButton Text="Add Item" @onclick="Add"></AddButton>
     </div>
 </div>
 
@@ -30,9 +41,13 @@
     }
 </style>
 @code {
-    public int restante { get; set; }
+    public int left { get; set; }
 
-    public int mensual { get; set; }
+    public int monthly { get; set; }
+
+    public int value { get; set; }
+
+    private List<string> List = new List<string> { "200-Tax2", "400-Tax3" };
 
     public void ValidateInt(ChangeEventArgs e)
     {
@@ -42,8 +57,13 @@
 
         if(value.Length != nums.Length)
         {
-            mensual = int.Parse(string.Join("", nums));
+            monthly = int.Parse(string.Join("", nums));
         }
 
+    }
+
+    public void Add()
+    {
+       List.Add()
     }
 }
