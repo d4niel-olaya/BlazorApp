@@ -15,19 +15,20 @@
             <input type="text" @bind-value="left">
         </p>
 
-        <label>Item</label>
+        <label>Name tax</label>
         <p>
-            <input type="text" @bind-value="value" />
+            <input type="text" @bind="_taxname" />
+        </p>
+
+        <label>Value tax</label>
+        <p>
+            <input type="number" @bind="_taxvalue"/>
         </p>
     </form>
 
     <div class="container">
         <Card Money="100" Name="Default tax"></Card>
-        @foreach(var s in List)
-        {
-            
-            <Card Money="@s.Split("-")[0]" Name="@s.Split('-')[1]"></Card>
-        }
+        
         <button @onclick="Add"> Add item</button>
     </div>
 </div>
@@ -45,9 +46,11 @@
 
     public int monthly { get; set; }
 
-    public string value { get; set; }
+    private string? _taxname;
 
-    private List<string> List = new List<string> { "200-Tax2", "400-Tax3" };
+    private int _taxvalue;
+
+    private List<Tax> List = new();
 
     public void ValidateInt(ChangeEventArgs e)
     {
@@ -64,6 +67,8 @@
 
     public void Add()
     {
-        List.Add(value.ToString().Split(',')[0] + value.ToString().Split(",")[1]);
+        List.Add(new Tax { TaxName = _taxname, TaxValue = _taxvalue});
+        _taxname = string.Empty;
+        _taxvalue = 0;
     }
 }
