@@ -28,7 +28,7 @@
             
             <Card Money="@s.Split("-")[0]" Name="@s.Split('-')[1]"></Card>
         }
-        <AddButton Text="Add Item" @onclick="Add"></AddButton>
+        <button @onclick="Add"> Add item</button>
     </div>
 </div>
 
@@ -45,7 +45,7 @@
 
     public int monthly { get; set; }
 
-    public int value { get; set; }
+    public string value { get; set; }
 
     private List<string> List = new List<string> { "200-Tax2", "400-Tax3" };
 
@@ -64,6 +64,6 @@
 
     public void Add()
     {
-       List.Add()
+        List.Add(value.ToString().Split(',')[0] + value.ToString().Split(",")[1]);
     }
 }
