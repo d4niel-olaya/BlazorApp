@@ -15,8 +15,20 @@
             <input type="text" @bind-value="restante">
         </p>
     </form>
+
+    <div class="container">
+        <Card Money="100" Name="Default tax"></Card>
+    </div>
 </div>
 
+
+<style>
+    .container
+    {
+        border-radius:8px;
+        border:1px solid black;
+    }
+</style>
 @code {
     public int restante { get; set; }
 
