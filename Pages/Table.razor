@@ -28,7 +28,10 @@
 
     <div class="container">
         <Card Money="100" Name="Default tax"></Card>
-        
+        @foreach(var t in List)
+        {
+              <Card Money="@t.TaxValue.ToString()" Name="@t.TaxName"></Card>
+        }
         <button @onclick="Add"> Add item</button>
     </div>
 </div>
@@ -48,7 +51,7 @@
 
     private string? _taxname;
 
-    private int _taxvalue;
+    private int _taxvalue = 1;
 
     private List<Tax> List = new();
 
@@ -67,8 +70,13 @@
 
     public void Add()
     {
-        List.Add(new Tax { TaxName = _taxname, TaxValue = _taxvalue});
-        _taxname = string.Empty;
-        _taxvalue = 0;
+
+        if(!string.IsNullOrWhiteSpace(_taxname) && _taxvalue >= 1)
+        {
+            List.Add(new Tax { TaxName = _taxname, TaxValue = _taxvalue});
+            _taxname = string.Empty;
+            _taxvalue = 1;
+            
+        }
     }
 }
