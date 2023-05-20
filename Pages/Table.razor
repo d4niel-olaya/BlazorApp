@@ -2,6 +2,23 @@
 
 <h1>Custom dashboard</h1>
 
-@code {
+<div>
+    <form>
+        <label> Ingreso mensual</label>
+        <p>
+            
+            <input type="text"/>
+        </p>
 
+        <label> Restante</label>
+        <p>
+            <input type="text" @bin>
+        </p>
+    </form>
+</div>
+
+@code {
+    public string restante { get; set; }
+
+    public string mensual { get; set; }
 }
