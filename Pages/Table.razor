@@ -7,18 +7,31 @@
         <label> Ingreso mensual</label>
         <p>
             
-            <input type="text"/>
+            <input type="text" @bind-value="mensual" @oninput="ValidateInt"/>
         </p>
 
         <label> Restante</label>
         <p>
-            <input type="text" @bin>
+            <input type="text" @bind-value="restante">
         </p>
     </form>
 </div>
 
 @code {
-    public string restante { get; set; }
+    public int restante { get; set; }
 
-    public string mensual { get; set; }
+    public int mensual { get; set; }
+
+    public void ValidateInt(ChangeEventArgs e)
+    {
+        var value = e.Value.ToString();
+
+        var nums = value.Where(char.IsDigit).ToArray();
+
+        if(value.Length != nums.Length)
+        {
+            mensual = int.Parse(string.Join("", nums));
+        }
+
+    }
 }
