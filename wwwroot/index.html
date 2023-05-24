@@ -20,6 +20,13 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            function CloseModal() {
+                document.querySelector('#myModal').innerHTML = "";
+            }
+        })
+    </script>
 </body>
 
 </html>
