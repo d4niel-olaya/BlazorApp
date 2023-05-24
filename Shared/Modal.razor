@@ -35,11 +35,11 @@
     private async Task CloseModal()
     {
         // Agrega aquí la lógica para cerrar la ventana modal si es necesario
-        js.InvokeVoidAsync("$('#myModal').modal('hide')");
+       await js.InvokeVoidAsync("close");
     }
 
     private async Task OpenModal()
     {
-        js.InvokeVoidAsync("$('#myModal').modal('show')");
+        await js.InvokeVoidAsync("open");
     }
 }

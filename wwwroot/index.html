@@ -19,10 +19,18 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
     <script type="text/javascript">
-        
+        function open() {
+            var modal = document.querySelector("modal fade")
+            modal.classList.remove("hidden"a)
+        }
+
+        function close() {
+            var modal = document.querySelector("modal fade")
+            modal.classList.add("hidden")
+        }
     </script>
+    <script src="_framework/blazor.webassembly.js"></script>
 </body>
 
 </html>
