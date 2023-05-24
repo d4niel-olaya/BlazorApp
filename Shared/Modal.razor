@@ -1,4 +1,4 @@
-﻿
+﻿@inject IJSRuntime js
 
 <div class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -16,6 +16,9 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="CloseModal">Cerrar</button>
             </div>
         </div>
+        <div>
+            <button class="btn btn-primary" @onclick="OpenModal">Abrir modal</button>
+        </div>
     </div>
 </div>
 
@@ -27,12 +30,16 @@
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    
 
-    private void CloseModal()
+
+    private async Task CloseModal()
     {
         // Agrega aquí la lógica para cerrar la ventana modal si es necesario
-        //JSInvokableAttribute.("$('#myModal').modal('hide')");
-       
+        js.InvokeVoidAsync("$('#myModal').modal('hide')");
+    }
+
+    private async Task OpenModal()
+    {
+        js.InvokeVoidAsync("$('#myModal').modal('show')");
     }
 }
