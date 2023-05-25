@@ -1,0 +1,26 @@
+﻿@inject IJSRuntime js
+
+<div>
+    <button @onclick="Open">@Title</button>
+    <div class="window">
+        <div>
+            <p>Window</p>
+            <button @onclick="Close">Close</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    public async Task Open()
+    {
+        await js.InvokeVoidAsync("open");
+    }
+
+    public async Task Close()
+    {
+        await js.InvokeVoidAsync("close");
+    }
+}
