@@ -35,3 +35,11 @@ h1:focus {
     display:none;
 }
 
+
+.add {
+    background-color:darkgray;
+    color:black;
+    width:50%;
+    border:none;
+    border-radius:8px;
+}
