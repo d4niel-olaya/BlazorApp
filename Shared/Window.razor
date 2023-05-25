@@ -1,7 +1,7 @@
 ﻿@inject IJSRuntime js
 
 <div>
-    <button @onclick="Open">@Title</button>
+    <button class="btn btn-primary" @onclick="Open">@Title</button>
     <div class="window">
         <div>
             <p>Window</p>
@@ -14,13 +14,10 @@
     [Parameter]
     public string Title { get; set; }
 
-    public async Task Open()
-    {
-        await js.InvokeVoidAsync("open");
-    }
+    public async Task Open(EventHandler e) => await js.InvokeVoidAsync("open", e);
 
-    public async Task Close()
+    public async Task Close(EventHandler e)
     {
-        await js.InvokeVoidAsync("close");
+        await js.InvokeVoidAsync("close", e);
     }
 }
